@@ -19,7 +19,7 @@ spec = Gem::Specification.new do |s|
   s.homepage = 'http://github.com/akiellor/killer_rspec_rack'
   s.platform = Gem::Platform::RUBY
   s.name = 'killer_rspec_rack'
-  s.version = '0.0.1'
+  s.version = '0.0.2.trunk'
   s.requirements << 'rspec v1.3, or greater'
   s.require_path = 'lib'
   s.files = ['lib/killer_rspec_rack.rb',
