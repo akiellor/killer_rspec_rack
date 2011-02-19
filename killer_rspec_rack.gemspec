@@ -16,4 +16,10 @@ Gem::Specification.new do |s|
   s.files = ['lib/killer_rspec_rack.rb',
              'lib/killer_rspec_rack/macros.rb',
              'lib/killer_rspec_rack/matchers.rb']
+
+  s.add_dependency('activesupport', '>= 2.3')
+  s.add_dependency('rspec', '>= 1.3')
+  s.add_dependency('rack-test', '>= 0.5.3')
+  s.add_development_dependency('sinatra', '>= 1.1')
+  s.add_development_dependency('rake', '>= 0.8.7')
 end
