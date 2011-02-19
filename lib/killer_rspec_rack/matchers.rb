@@ -9,15 +9,15 @@ module KillerRspecRack
 
     define_matcher :be_ok_and_json do
       match do |response|
-        response.ok? && KillerRspecRack::Matchers.has_header?(response, "Content-Type", "application/json")
+        response.ok? && KillerRspecRack::Matchers.has_content_type?(response, "application/json")
       end
 
       failure_message_for_should do |response|
-        "expected response to be ok and json, but was '#{response.ok? ? "OK" : "NOT OK"}' and '#{response.headers['Content-Type']}"
+        "expected response to be ok and json, but was '#{response.ok? ? "OK" : "NOT OK"}' and '#{response.headers['Content-Type']}'"
       end
 
       failure_message_for_should_not do |response|
-        "expected response to be not ok and not json, but was '#{response.ok? ? "OK" : "NOT OK"}' and '#{response.headers['Content-Type']}"
+        "expected response to be not ok and not json, but was '#{response.ok? ? "OK" : "NOT OK"}' and '#{response.headers['Content-Type']}'"
       end
     end
 
@@ -39,6 +39,10 @@ module KillerRspecRack
       response.headers[header] == value.to_s
     end
 
+    def self.has_content_type? response, value
+      response.headers["Content-Type"].include? value.to_s
+    end
+
     define_matcher :have_header do |header, value|
       match do |response|
         KillerRspecRack::Matchers.has_header? response, header, value
@@ -55,7 +59,7 @@ module KillerRspecRack
 
     define_matcher :have_content_type do |value|
       match do |response|
-        KillerRspecRack::Matchers.has_header? response, "Content-Type", value
+        KillerRspecRack::Matchers.has_content_type? response, value
       end
 
       failure_message_for_should do |response|

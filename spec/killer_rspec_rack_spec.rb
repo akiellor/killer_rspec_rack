@@ -4,7 +4,6 @@ require 'sinatra'
 require 'lib/killer_rspec_rack'
 require 'active_support'
 
-include Rack::Test::Methods
 include KillerRspecRack
 
 def sinatra &app_block
@@ -54,7 +53,7 @@ describe 'unauthorized app' do
   def app
     sinatra do
       get '/json' do
-        content_type :json
+        content_type 'application/json; charset=utf-8'
         "{'key': 'value'}"
       end
     end
