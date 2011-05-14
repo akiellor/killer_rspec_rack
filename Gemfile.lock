@@ -32,9 +32,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport (>= 2.3)
   killer_rspec_rack!
-  rack-test (>= 0.5.3)
   rake (>= 0.8.7)
-  rspec (>= 1.3)
   sinatra (>= 1.1)

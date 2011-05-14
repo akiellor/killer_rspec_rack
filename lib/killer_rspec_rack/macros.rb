@@ -25,7 +25,7 @@ module KillerRspecRack
 
       context "the response body of #{url}" do
         subject do
-          self.send(options[:method], url)
+          request url, options
           decoder = decoders.detect {|dec| dec.can_decode? last_response }
           decoder.decode last_response.body
         end
@@ -37,7 +37,7 @@ module KillerRspecRack
     def the_response_of url, options = {:method => :get}, &assertion
       context "the response of #{url}" do
         subject do
-          self.send(options[:method], url)
+          request url, options
           last_response
         end
 
